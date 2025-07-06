@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/register.css" />
+    <link rel="stylesheet" href="/css/flash.css">
+</head>
+
+<body>
+    <% if (success_msg && success_msg.length> 0) { %>
+        <div class="flash flash-success">
+            <%= success_msg[0] %>
+        </div>
+        <% } %>
+
+            <% if (error_msg && error_msg.length> 0) { %>
+                <div class="flash flash-error">
+                    <%= error_msg[0] %>
+                </div>
+                <% } %>
+
+                    <% if (error && error.length> 0) { %>
+                        <div class="flash flash-error">
+                            <%= error[0] %>
+                        </div>
+                        <% } %>
+
+                            <div class="register-container">
+                                <h2>Register</h2>
+                                <form action="/api/auth/register" method="POST">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" id="username" required />
+
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" required />
+
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" required />
+
+                                    <button type="submit">Register</button>
+                                </form>
+
+                                <div class="extra-links">
+                                    <div class="login-link">
+                                        <span>Already have an account? <a href="/api/auth/login">Login here</a></span>
+                                    </div>
+
+                                    <a href="/api/auth/google" class="google-btn">
+                                        <img src="https://developers.google.com/identity/images/g-logo.png"
+                                            alt="Google Logo" width="18" height="18" />
+                                        <span>Sign up with Google</span>
+                                    </a>
+                                </div>
+
+                            </div>
+</body>
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.flash').forEach(el => el.remove());
+    }, 3000);
+</script>
+
+</html>

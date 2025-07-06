@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/flash.css">
+</head>
+
+<body>
+    <% if (success_msg && success_msg.length> 0) { %>
+        <div class="flash flash-success">
+            <%= success_msg[0] %>
+        </div>
+        <% } %>
+
+            <% if (error_msg && error_msg.length> 0) { %>
+                <div class="flash flash-error">
+                    <%= error_msg[0] %>
+                </div>
+                <% } %>
+
+                    <% if (error && error.length> 0) { %>
+                        <div class="flash flash-error">
+                            <%= error[0] %>
+                        </div>
+                        <% } %>
+
+                            <div class="login-container">
+                                <h2>Login</h2>
+                                <form action="/api/auth/login" method="POST">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" required />
+
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" required />
+
+                                    <button type="submit">Login</button>
+                                </form>
+
+                                <a href="/api/auth/google" class="google-btn">
+                                    <img src="https://developers.google.com/identity/images/g-logo.png"
+                                        alt="Google Logo" width="20" height="20">
+                                    Continue with Google
+                                </a>
+
+                                <div class="register-link">
+                                    <span>Don't have an account? <a href="/api/auth/register">Register here</a></span>
+                                </div>
+                            </div>
+</body>
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.flash').forEach(el => el.remove());
+    }, 3000);
+</script>
+
+</html>
